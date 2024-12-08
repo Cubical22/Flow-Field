@@ -30,7 +30,7 @@ class Particle {
             this.position[0] = 0;
             this.last_position = [...this.position];
         }
-        
+
         if (this.position[1] > height + 5) {
             this.position[1] = -3;
             this.last_position = [...this.position];
@@ -65,13 +65,17 @@ function get_the_closest_vector(position) {
         }
     });
 
-    return closest_vector;
+    return [closest_vector, min_dis];
 }
 
 function update_particles_velocity(width, height) {
     particles.forEach(particle => {
-        const vector = get_the_closest_vector(particle.position);
-        particle.velocity = [Math.cos(vector.rotation), -Math.sin(vector.rotation)];
+        const [vector, dis] = get_the_closest_vector(particle.position);
+        // particle.velocity = [Math.cos(vector.rotation), -Math.sin(vector.rotation)];
+
+        particle.velocity[0] += (Math.cos(vector.rotation) - particle.velocity[0]) * dis / 40;
+        particle.velocity[1] += (-Math.sin(vector.rotation) - particle.velocity[1]) * dis / 40;
+
         particle.update(width, height);
     });
 }
