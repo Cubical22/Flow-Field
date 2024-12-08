@@ -9,9 +9,6 @@ class Particle {
 
     draw(c) {
         c.beginPath();
-        // c.fillStyle = "white";
-        // c.arc(...this.position, 1, 0, Math.PI * 2, false);
-        // c.fill();
         c.strokeStyle = "rgba(255,255,255,0.3)";
         c.moveTo(...this.last_position);
         c.lineTo(...this.position);
@@ -23,8 +20,8 @@ class Particle {
     }
 
     update(width, height) {
-        this.position[0] += this.velocity[0] * 2;
-        this.position[1] += this.velocity[1] * 2;
+        this.position[0] += this.velocity[0] * particle_speed_multiplier;
+        this.position[1] += this.velocity[1] * particle_speed_multiplier;
 
         if (this.position[0] > width) {
             this.position[0] = 0;
@@ -43,7 +40,8 @@ class Particle {
 
 function init_particles(count, width, height) {
     for (let i = 0; i < count; i++) {
-        particles.push(new Particle([Math.random() * width, Math.random() * height]));
+        particles.push(new Particle([particle_start_from_right? 0 : Math.random() * width,
+                                     Math.random() * height]));
     }
 }
 
@@ -71,7 +69,6 @@ function get_the_closest_vector(position) {
 function update_particles_velocity(width, height) {
     particles.forEach(particle => {
         const [vector, dis] = get_the_closest_vector(particle.position);
-        // particle.velocity = [Math.cos(vector.rotation), -Math.sin(vector.rotation)];
 
         particle.velocity[0] += (Math.cos(vector.rotation) - particle.velocity[0]) * dis / 40;
         particle.velocity[1] += (-Math.sin(vector.rotation) - particle.velocity[1]) * dis / 40;
