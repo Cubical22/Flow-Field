@@ -1,7 +1,8 @@
 const canvas = document.getElementById("main");
 const c = canvas.getContext("2d");
 
-const size_and_count = [1000, 600, 10, 5];
+// width, height, row count, col count
+const size_and_count = [1000, 600, 5, 10];
 
 const resize = () => {
     canvas.width = size_and_count[0];
@@ -14,6 +15,8 @@ function animation() {
     c.fillStyle = "black";
     c.rect(0,0,size_and_count[0],size_and_count[1]);
     c.fill();
+
+    draw_vector_space(c);
 
     requestAnimationFrame(animation);
 } animation();
