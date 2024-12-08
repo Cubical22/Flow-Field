@@ -1,5 +1,5 @@
 const vector_space = [];
-const vector_display_r = 10;
+const vector_display_r = 20;
 
 class Vector {
     constructor(position, rotation) {
