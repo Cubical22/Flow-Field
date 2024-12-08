@@ -9,7 +9,12 @@ class Particle {
 
     draw(c) {
         c.beginPath();
-        c.strokeStyle = "rgba(255,255,255,0.3)";
+        // c.strokeStyle = "rgba(255,255,255,0.3)";
+        if (particle_color)
+            c.strokeStyle = `hsla(${this.position[0] / size_and_count[0] * 255}, 50%, 50%, 10%)`;
+        else
+            c.strokeStyle = "rgba(1,1,1,0.1)";
+
         c.moveTo(...this.last_position);
         c.lineTo(...this.position);
         c.stroke();

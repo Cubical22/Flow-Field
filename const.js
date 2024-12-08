@@ -2,7 +2,8 @@ const particle_start_from_right = true; // default: true
 const clear_each_frame = false; // default: false
 const display_vector_space = false; // default: false
 const update_rate = false; // default: false
-let rate_addition = 0.006;
+let rate_addition = 0.006; // default: 0.006
+const particle_color = true; // default: true;
 
 // width, height, row count, col count (for vector space)
 const size_and_count = [1000, 600, 50, 100]; // default: [1000, 600, 50, 100]
