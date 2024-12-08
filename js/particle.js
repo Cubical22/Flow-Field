@@ -4,25 +4,39 @@ class Particle {
     constructor(position) {
         this.position = position;
         this.velocity = [0,0];
+        this.last_position = [...position];
     }
 
     draw(c) {
         c.beginPath();
-        c.fillStyle = "white";
-        c.arc(...this.position, 3, 0, Math.PI * 2, false);
-        c.fill();
+        // c.fillStyle = "white";
+        // c.arc(...this.position, 1, 0, Math.PI * 2, false);
+        // c.fill();
+        c.strokeStyle = "white";
+        c.moveTo(...this.last_position);
+        c.lineTo(...this.position);
+        c.stroke();
+
         c.closePath();
+
+        this.last_position = [...this.position];
     }
 
     update(width, height) {
-        this.position[0] += this.velocity[0] * 10;
-        this.position[1] += this.velocity[1] * 10;
+        this.position[0] += this.velocity[0] * 2;
+        this.position[1] += this.velocity[1] * 2;
 
         if (this.position[0] > width) {
             this.position[0] = 0;
+            this.last_position = [...this.position];
         }
-        if (this.position[1] > height) {
-            this.position[1] = 0;
+        
+        if (this.position[1] > height + 5) {
+            this.position[1] = -3;
+            this.last_position = [...this.position];
+        } else if (this.position[1] < -5) {
+            this.position[1] = height + 5;
+            this.last_position = [...this.position];
         }
     }
 }

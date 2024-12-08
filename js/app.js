@@ -3,7 +3,7 @@ const c = canvas.getContext("2d");
 
 // width, height, row count, col count (for vector space)
 const size_and_count = [1000, 600, 40, 80];
-const particle_count = 50;
+const particle_count = 300;
 
 const noise_devide = 400;
 let rate = Math.random();
@@ -17,11 +17,11 @@ init_vector_space(size_and_count[2], size_and_count[3], size_and_count[0], size_
 init_particles(particle_count, size_and_count[0], size_and_count[1]);
 
 function animation() {
-    c.fillStyle = "black";
+    c.fillStyle = "rgba(0,0,0,0.05)";
     c.rect(0,0,size_and_count[0],size_and_count[1]);
     c.fill();
 
-    draw_vector_space(c);
+    // draw_vector_space(c);
     draw_particles(c);
     update_particles_velocity(size_and_count[0], size_and_count[1]);
 
