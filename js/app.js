@@ -6,6 +6,8 @@ const resize = () => {
     canvas.height = 600;
 }; resize();
 
+init_vector_space(10, 5, 1000, 600);
+
 function animation() {
     c.fillStyle = "black";
     c.rect(0,0,1000,600);
