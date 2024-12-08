@@ -2,8 +2,8 @@ const canvas = document.getElementById("main");
 const c = canvas.getContext("2d");
 
 // width, height, row count, col count
-const size_and_count = [1000, 600, 10, 20];
-const noise_devide = 500;
+const size_and_count = [1000, 600, 40, 80];
+const noise_devide = 400;
 let rate = Math.random();
 
 const resize = () => {
@@ -25,7 +25,7 @@ function animation() {
                                          vector.position[1] / noise_devide, rate);
     });
 
-    rate += 0.01;
+    rate += 0.006;
 
     requestAnimationFrame(animation);
 } animation();
