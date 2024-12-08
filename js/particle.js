@@ -12,7 +12,7 @@ class Particle {
         // c.fillStyle = "white";
         // c.arc(...this.position, 1, 0, Math.PI * 2, false);
         // c.fill();
-        c.strokeStyle = "white";
+        c.strokeStyle = "rgba(255,255,255,0.3)";
         c.moveTo(...this.last_position);
         c.lineTo(...this.position);
         c.stroke();
